@@ -1,10 +1,8 @@
 import React from 'react';
+import Clock from './Components/Clock';
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+  return <Clock />;
 }
 
 export default App;
