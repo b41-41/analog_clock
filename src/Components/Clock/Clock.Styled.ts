@@ -46,3 +46,43 @@ export const SecondHand = styled.div`
   transform: rotate(-90deg);
   z-index: 3;
 `;
+
+export const Time12 = styled.div`
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 4;
+`;
+
+export const Time3 = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 4;
+`;
+
+export const Time6 = styled.div`
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 4;
+`;
+
+export const Time9 = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 4;
+`;
