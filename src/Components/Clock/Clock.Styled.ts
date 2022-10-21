@@ -11,7 +11,7 @@ export const ClockWrapper = styled.div`
   aspect-ratio: 1;
 `;
 
-export const HourHand = styled.div`
+export const HourHand = styled.div<{ hours: number }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,11 +19,15 @@ export const HourHand = styled.div`
   height: 8px;
   background-color: #000;
   transform-origin: 0 50%;
-  transform: rotate(-90deg);
+  transform: rotate(
+    ${(props) =>
+      (props.hours > 12 ? (props.hours - 12) / 12 : props.hours / 12) * 360 -
+      90}deg
+  );
   z-index: 1;
 `;
 
-export const MinuteHand = styled.div`
+export const MinuteHand = styled.div<{ minute: number }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,11 +35,11 @@ export const MinuteHand = styled.div`
   height: 4px;
   background-color: #000;
   transform-origin: 0 50%;
-  transform: rotate(-90deg);
+  transform: rotate(${(props) => (props.minute / 60) * 360 - 90}deg);
   z-index: 2;
 `;
 
-export const SecondHand = styled.div`
+export const SecondHand = styled.div<{ seconds: number }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -43,7 +47,7 @@ export const SecondHand = styled.div`
   height: 2px;
   background-color: #ff0000;
   transform-origin: 0 50%;
-  transform: rotate(-90deg);
+  transform: rotate(${(props) => (props.seconds / 60) * 360 - 90}deg);
   z-index: 3;
 `;
 
