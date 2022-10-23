@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import { isTooltipVisibleSelector } from '../../../Redux/common';
 import { doubleDigitNumber } from '../../../Utils';
+
 import * as S from './Tooltip.Styled';
 
 type Props = {
   currentTime: Date;
-  visible: boolean;
   mousePosition: { x: number; y: number };
 };
 
 const Tooltip = (props: Props) => {
+  const isTooltipVisible = useSelector(isTooltipVisibleSelector);
+
   return (
-    <S.ToolTipWrapper visible={props.visible} position={props.mousePosition}>
+    <S.ToolTipWrapper visible={isTooltipVisible} position={props.mousePosition}>
       {doubleDigitNumber(props.currentTime.getHours())}:
       {doubleDigitNumber(props.currentTime.getMinutes())}:
       {doubleDigitNumber(props.currentTime.getSeconds())}
