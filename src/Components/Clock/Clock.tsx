@@ -1,12 +1,22 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  isTooltipVisibleSelector,
+  turnOffTooltip,
+  turnOnTooltip,
+} from '../../Redux/common';
+
 import Tooltip from '../Commons/Tooltip/Tooltip';
+
 import * as S from './Clock.Styled';
 
 type Props = {};
 
 const Clock = (props: Props) => {
-  const [currentTime, setCurrentTime] = React.useState(new Date());
-  const [isTooltipVisible, setIsTooltipVisible] = React.useState(false);
+  const dispatch = useDispatch();
+  const isTooltipVisible = useSelector(isTooltipVisibleSelector);
+
+  const [currentTime, setCurrentTime] = React.useState<Date>(new Date());
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   const clockRef = React.useRef<HTMLDivElement>(null);
 
@@ -21,10 +31,10 @@ const Clock = (props: Props) => {
 
   useEffect(() => {
     const openTooltip = () => {
-      setIsTooltipVisible(true);
+      dispatch(turnOnTooltip());
     };
     const closeTooltip = () => {
-      setIsTooltipVisible(false);
+      dispatch(turnOffTooltip());
     };
     const moveTooltip = (event: MouseEvent) => {
       const offsetWidth = clockRef.current?.offsetWidth || 0;
@@ -59,11 +69,7 @@ const Clock = (props: Props) => {
       <S.HourHand hours={currentTime.getHours()} />
       <S.MinuteHand minute={currentTime.getMinutes()} />
       <S.SecondHand seconds={currentTime.getSeconds()} />
-      <Tooltip
-        currentTime={currentTime}
-        visible={isTooltipVisible}
-        mousePosition={mousePosition}
-      />
+      <Tooltip currentTime={currentTime} mousePosition={mousePosition} />
     </S.ClockWrapper>
   );
 };
