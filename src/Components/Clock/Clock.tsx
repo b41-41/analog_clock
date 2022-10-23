@@ -61,7 +61,7 @@ const Clock = (props: Props) => {
       <S.Time3>3</S.Time3>
       <S.Time6>6</S.Time6>
       <S.Time9>9</S.Time9>
-      <S.HourHand hours={currentTime.getHours()} />
+      <S.HourHand currentTime={currentTime} />
       <S.MinuteHand minute={currentTime.getMinutes()} />
       <S.SecondHand seconds={currentTime.getSeconds()} />
       <Tooltip currentTime={currentTime} mousePosition={mousePosition} />
