@@ -11,7 +11,7 @@ export const ClockWrapper = styled.div`
   aspect-ratio: 1;
 `;
 
-export const HourHand = styled.div<{ hours: number }>`
+export const HourHand = styled.div<{ currentTime: Date }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,7 +21,12 @@ export const HourHand = styled.div<{ hours: number }>`
   transform-origin: 0 50%;
   transform: rotate(
     ${(props) =>
-      (props.hours > 12 ? (props.hours - 12) / 12 : props.hours / 12) * 360 -
+      (props.currentTime.getHours() > 12
+        ? (props.currentTime.getHours() - 12) / 12 +
+          props.currentTime.getMinutes() / 60 / 12
+        : props.currentTime.getHours() / 12 +
+          props.currentTime.getMinutes() / 60 / 12) *
+        360 -
       90}deg
   );
   z-index: 1;
