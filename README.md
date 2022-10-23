@@ -4,5 +4,5 @@
 
 - React
 - TypeScript
-- Redux
+- Redux (Redux Toolkit)
 - Styled-Components
