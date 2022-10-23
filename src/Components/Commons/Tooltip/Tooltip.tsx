@@ -15,7 +15,13 @@ const Tooltip = (props: Props) => {
   const isTooltipVisible = useSelector(isTooltipVisibleSelector);
 
   return (
-    <S.ToolTipWrapper visible={isTooltipVisible} position={props.mousePosition}>
+    <S.ToolTipWrapper
+      visible={isTooltipVisible}
+      style={{
+        top: props.mousePosition.y + 'px',
+        left: props.mousePosition.x + 'px',
+      }}
+    >
       {doubleDigitNumber(props.currentTime.getHours())}:
       {doubleDigitNumber(props.currentTime.getMinutes())}:
       {doubleDigitNumber(props.currentTime.getSeconds())}

@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  isTooltipVisibleSelector,
-  turnOffTooltip,
-  turnOnTooltip,
-} from '../../Redux/common';
+import { useDispatch } from 'react-redux';
+import { turnOffTooltip, turnOnTooltip } from '../../Redux/common';
 
 import Tooltip from '../Commons/Tooltip/Tooltip';
 
@@ -14,7 +10,6 @@ type Props = {};
 
 const Clock = (props: Props) => {
   const dispatch = useDispatch();
-  const isTooltipVisible = useSelector(isTooltipVisibleSelector);
 
   const [currentTime, setCurrentTime] = React.useState<Date>(new Date());
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
